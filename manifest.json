@@ -5,7 +5,6 @@
 	"minAppVersion": "0.15.0",
 	"description": "Replaces default behavior for Drag and Drop, where it puts embedded links, and instead uses normal ones",
 	"author": "debuxxed",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"authorUrl": "https://github.com/debuxxed",
 	"isDesktopOnly": true
 }
