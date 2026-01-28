@@ -1,36 +1,35 @@
-import {App, PluginSettingTab, Setting} from "obsidian";
-import MyPlugin from "./main";
+import { type App, PluginSettingTab, Setting } from "obsidian";
+import type DisableEmbeddedDefaultPlugin from "./main";
 
-export interface MyPluginSettings {
-	mySetting: string;
+export interface DisableEmbeddedDefaultSettings {
+	onAlt: boolean;
 }
 
-export const DEFAULT_SETTINGS: MyPluginSettings = {
-	mySetting: 'default'
-}
+export const DEFAULT_SETTINGS: DisableEmbeddedDefaultSettings = {
+	onAlt: false,
+};
 
-export class SampleSettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
+export class DisableEmbeddedSettingTab extends PluginSettingTab {
+	plugin: DisableEmbeddedDefaultPlugin;
 
-	constructor(app: App, plugin: MyPlugin) {
+	constructor(app: App, plugin: DisableEmbeddedDefaultPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
 
 	display(): void {
-		const {containerEl} = this;
+		const { containerEl } = this;
 
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName('Settings #1')
-			.setDesc('It\'s a secret')
-			.addText(text => text
-				.setPlaceholder('Enter your secret')
-				.setValue(this.plugin.settings.mySetting)
-				.onChange(async (value) => {
-					this.plugin.settings.mySetting = value;
+			.setName("Only on Alt/Option")
+			.setDesc("Replaces behavior only for external links")
+			.addToggle((toggle) =>
+				toggle.setValue(this.plugin.settings.onAlt).onChange(async (value) => {
+					this.plugin.settings.onAlt = value;
 					await this.plugin.saveSettings();
-				}));
+				}),
+			);
 	}
 }
