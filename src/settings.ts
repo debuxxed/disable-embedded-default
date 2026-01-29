@@ -23,7 +23,7 @@ export class DisableEmbeddedSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName("Only on Alt/Option")
+			.setName("Only on alt/option")
 			.setDesc("Replaces behavior only for external links")
 			.addToggle((toggle) =>
 				toggle.setValue(this.plugin.settings.onAlt).onChange(async (value) => {

@@ -16,8 +16,6 @@ export default class DisableEmbeddedDefaultPlugin extends Plugin {
 		let fire = false;
 		this.registerEvent(
 			this.app.workspace.on("editor-drop", (evt: DragEvent) => {
-				console.log("onAlt: " + this.settings.onAlt);
-				console.log("isAltKey: " + evt.altKey);
 				fire = !this.settings.onAlt || evt.altKey;
 
 				// Safety timeout: Reset flag if no change happens within 1s (e.g. drop cancelled)
